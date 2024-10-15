@@ -1,0 +1,50 @@
+Code Description:
+
+Library Imports:
+		The code imports necessary libraries including pandas, numpy, matplotlib.pyplot, seaborn, and several sklearn modules. These are used for data handling, visualization, and machine learning tasks.
+Data Import:
+
+Two datasets are loaded: 
+		application_data.csv and previous_application.csv.
+		application_data contains information about applicants, while previous_application_data holds data on their previous loan applications.
+
+Data Inspection:
+		The initial exploration of application_data is performed using head() and info() to get a glimpse of the data structure and types.
+
+Data Quality and Missing Value Imputation:
+		Missing values in application_data are handled using mean imputation through the SimpleImputer from sklearn.
+This ensures that rows with missing data points are filled with the column’s mean value.
+
+Data Cleaning and Feature Engineering:
+		DAYS_BIRTH (days since birth) is converted to age in years by taking the absolute value and dividing by 365.
+AMT_INCOME_TOTAL is ensured to be a float type for numerical operations.
+A new column INCOME_BINNED is created to categorize the total income into bins ranging from 'Low' to 'Super High'.
+
+Data Imbalance Check:
+		The distribution of the target variable (TARGET) is checked, and a count plot visualizes the class distribution to assess if there is class imbalance.
+
+Univariate Analysis:
+		Categorical Variables: Variables like CODE_GENDER, FLAG_OWN_CAR, and FLAG_OWN_REALTY are analyzed using count plots to understand their distribution.
+
+Numerical Variables: 
+		Features such as AMT_INCOME_TOTAL and DAYS_BIRTH are analyzed with histograms and KDE plots to observe their distributions.
+
+Correlation Analysis:
+		A heatmap of the correlation matrix is generated for numerical features to understand relationships between variables.
+
+Previous Application Data:
+		previous_application_data is inspected, and missing values are filled using mean imputation.
+
+Merging Datasets:
+		application_data and previous_application_data are merged using a common identifier SK_ID_CURR to combine information from both datasets.
+
+Data Preprocessing for Machine Learning:
+	Encoding: Categorical variables are encoded using LabelEncoder to convert them into numerical format.
+	Train-Test Split: The dataset is split into training and testing sets using train_test_split, with 70% for training and 30% for testing.
+	Feature Scaling: Numerical features are scaled using StandardScaler to normalize the data for better model performance.
+
+Model Training and Prediction:
+		A RandomForestClassifier is trained on the preprocessed training data.The model is used to predict outcomes on the test set.
+
+Model Evaluation:
+		The performance of the model is evaluated using a confusion matrix and classification report, which provide metrics like precision, recall, F1-score, and accuracy
